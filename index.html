@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta name="theme-color" content="">
+		<meta name="msapplication-TileColor" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Thandolwethu Mpofu">
+        <title>vue-js Starter Kit by Elandamor</title>
+		<!-- Add to home screen for Safari on iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="">
+		<meta name="msapplication-TileImage" content="">
+	    <link rel="icon" href="">
+		<link rel="mask-icon" href="" color="black">
+	    <link rel="manifest" href="">
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{ message }}</h1>
+        </div>
+
+        <script src="static/js/vue.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            document.documentElement.className = 'js';
+
+            var app = new Vue({
+                el : '#app',
+                data : {
+                    message: 'vue-js Starter Kit by Elandamor'
+                }
+            });
+        </script>
+    </body>
+</html>
