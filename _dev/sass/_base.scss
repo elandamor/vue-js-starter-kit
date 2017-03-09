@@ -1,0 +1,71 @@
+@import "utils/variables";
+
+:root {
+
+//== Brand Colors
+
+	--brand-primary   : #fafafa;
+	--brand-secondary : #232b2e;
+	--brand-tertiary  : darken(complement(#fafafa),50);
+
+	--brand-success   : #58E2C6;
+	--brand-info      : #03a9f4;
+	--brand-warning   : #FBE21C;
+	--brand-danger    : #d9534f;
+
+	--body-bg         : #fafafa;
+
+	$base-gray : #ddd;
+
+	--gray-lighter : lighten($base-gray,10);
+	--gray-light   : lighten($base-gray,5);
+	--gray-base    : $base-gray;
+	--gray-dark    : darken($base-gray,5);
+	--gray-darker  : darken($base-gray,10);
+
+//== Material Keylines
+
+	--global-padding : 16px;
+    --global-spacer  : calc(var(--global-padding) / 2);
+
+	--app-bar-mobile--height : 56px;
+	--app-bar-tablet--height : calc(var(--app-bar-mobile--height) + var(--global-spacer));
+
+	--icon-touch-target : calc(var(--app-bar-mobile--height) - var(--global-spacer));
+	--icon-size         : calc(var(--icon-touch-target) / 2);
+
+//== Material Motion
+
+	--cb-ease-in     : cubic-bezier(0.4, 0.0, 1.0, 1.0); // for objects leaving the screen.
+	--cb-ease-out    : cubic-bezier(0.0, 0.0, 0.2, 1.0); // for objects entering the screen.
+	--cb-ease-in-out : cubic-bezier(0.4, 0.0, 0.2, 1.0);
+	--cb-sharp       : cubic-bezier(0.4, 0.0, 0.6, 1.0);
+}
+
+* {
+    box-sizing : border-box;
+}
+
+html,
+body {
+	position       : relative;
+	margin         : 0;
+	padding        : 0;
+	height         : 100%;
+	letter-spacing : 0.025em;
+	@include font-smoothing;
+	background     : var(--body-bg);
+	user-select    : none;
+}
+
+body {
+	@include font('Roboto',$font-size-small);
+	font-weight: 300;
+    scroll-behavior : smooth;
+
+	@include breakpoint($bp-small) {
+		@include font-size($font-size-base);
+	}
+}
+
+@import "components/text";

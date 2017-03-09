@@ -1,0 +1,25 @@
+progress {
+    flex: 1;
+    width: 100%;
+    height: $global-spacer / 2;
+    margin-top: $global-spacer;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &::-webkit-progress-bar {
+        background-color: var(--gray-base);
+        border-radius: 100px;
+    }
+
+    &::-webkit-progress-value {
+        background-color: #6387F5;
+        border-radius: 100px;
+    }
+    &::-moz-progress-bar {
+        background: currentColor;
+        border-radius: 100px;
+    }
+    &::-ms-fill {
+        border-radius: 100px;
+    }
+}

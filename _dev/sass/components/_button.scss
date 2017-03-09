@@ -1,0 +1,19 @@
+.pd-button,
+pd-button {
+    -webkit-appearance: none;
+    display: inline-block;
+	padding: var(--global-spacer) calc(var(--global-spacer) * 2);
+    border: none;
+	border-radius: 4px;
+	background: none;
+	cursor: pointer;
+    font-family: $font-family-base;
+    @include font-size(12px);
+    align-items: center;
+    outline: 0;
+
+    &[disabled] {
+        opacity: .5;
+        pointer-events: none;
+    }
+}

@@ -1,0 +1,166 @@
+:root {
+  --brand-primary: #fafafa;
+  --brand-secondary: #232b2e;
+  --brand-tertiary: #7b7b7b;
+  --brand-success: #58E2C6;
+  --brand-info: #03a9f4;
+  --brand-warning: #FBE21C;
+  --brand-danger: #d9534f;
+  --body-bg: #fafafa;
+  --gray-lighter: #f7f7f7;
+  --gray-light: #eaeaea;
+  --gray-base: #ddd;
+  --gray-dark: #d0d0d0;
+  --gray-darker: #c4c4c4;
+  --global-padding: 16px;
+  --global-spacer: calc(var(--global-padding) / 2);
+  --app-bar-mobile--height: 56px;
+  --app-bar-tablet--height: calc(var(--app-bar-mobile--height) + var(--global-spacer));
+  --icon-touch-target: calc(var(--app-bar-mobile--height) - var(--global-spacer));
+  --icon-size: calc(var(--icon-touch-target) / 2);
+  --cb-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --cb-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --cb-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --cb-sharp: cubic-bezier(0.4, 0, 0.6, 1); }
+
+* {
+  box-sizing: border-box; }
+
+html,
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  letter-spacing: 0.025em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: 'liga', 'kern';
+  -webkit-font-kerning: auto;
+          font-kerning: auto;
+  background: var(--body-bg);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
+body {
+  font-family: "Roboto";
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 22.652px;
+  font-weight: normal;
+  font-style: normal;
+  font-weight: 300;
+  scroll-behavior: smooth; }
+  @media only screen and (min-width: 37.5rem) {
+    body {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 25.888px; } }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Gilroy ExtraBold", "Georgia";
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin: 0; }
+
+h1 {
+  font-size: 38px;
+  font-size: 2.375rem;
+  line-height: 61.484px; }
+
+h2 {
+  font-size: 29px;
+  font-size: 1.8125rem;
+  line-height: 46.922px; }
+
+h3 {
+  font-size: 23px;
+  font-size: 1.4375rem;
+  line-height: 37.214px; }
+
+h4 {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 29.124px; }
+
+h5 {
+  font-size: 15px;
+  font-size: 0.9375rem;
+  line-height: 24.27px; }
+
+h6 {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 21.034px; }
+
+.toast-container {
+  position: fixed;
+  padding: var(--global-padding);
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 3;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: -webkit-transform 0.25s cubic-bezier(0, 0, 0.3, 1);
+  transition: -webkit-transform 0.25s cubic-bezier(0, 0, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0, 0, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0, 0, 0.3, 1), -webkit-transform 0.25s cubic-bezier(0, 0, 0.3, 1); }
+  .toast-container.is-visible {
+    -webkit-transform: none;
+            transform: none; }
+
+.toast {
+  -webkit-transition: opacity 1s cubic-bezier(0, 0, 0.3, 1);
+  transition: opacity 1s cubic-bezier(0, 0, 0.3, 1);
+  font-size: 15px;
+  font-weight: 500;
+  width: 100%;
+  pointer-events: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.875); }
+  .toast.interactive .toast__action {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+
+.toast__content {
+  padding: var(--global-padding);
+  color: #FFF;
+  border-radius: 2px;
+  display: inline;
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 19.416px;
+  letter-spacing: 0.025em; }
+
+.toast__action {
+  display: none;
+  min-width: 40px;
+  height: 40px;
+  pointer-events: auto;
+  cursor: pointer;
+  background-image: url("/static/images/icons/white/ic_close.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  opacity: .5;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
+  .toast__action:hover, .toast__action:focus {
+    opacity: 1; }
+
+.toast--dismissed {
+  opacity: 0; }

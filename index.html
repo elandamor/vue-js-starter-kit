@@ -17,20 +17,41 @@
 	    <link rel="manifest" href="">
     </head>
     <body>
-        <div id="app">
-            <h1>{{ message }}</h1>
-        </div>
+		<div id="app">
+			<header class="app-header">
+				<nav>
+					<ul>
+						<nav-item v-for="link in navLinks" v-bind:nav="link"></nav-item>
+					</ul>
+				</nav>
+			</header>
+			<app-view>
+				<app-content></app-content>
+			</app-view>
+		</div>
 
-        <script src="static/js/vue.js" charset="utf-8"></script>
-        <script type="text/javascript">
-            document.documentElement.className = 'js';
+		<script>
+		    (function() {
+				document.documentElement.className = 'js';
 
-            var app = new Vue({
-                el : '#app',
-                data : {
-                    message: 'vue-js Starter Kit by Elandamor'
-                }
-            });
-        </script>
+		        function addBootstrap () {
+		            var bootstrap = document.createElement('script');
+					bootstrap.src = 'static/js/bootstrap.js';
+		            bootstrap.setAttribute('async','');
+
+		            document.head.appendChild(bootstrap);
+		        }
+
+		        addBootstrap();
+		    })();
+		</script>
+
+		<template id="tpl-toast">
+		    <div class="toast">
+		        <div class="toast__content"></div>
+				<button class="pd-button toast__action" data-action="False" aria-label="None" title="" tabindex="-1"></button>
+		    </div>
+		</template>
+		<div class="toast-container" role="alert"></div>
     </body>
 </html>

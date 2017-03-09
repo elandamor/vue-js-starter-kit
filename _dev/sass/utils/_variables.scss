@@ -1,0 +1,70 @@
+	$golden-ratio: 1.618;
+	$font-ratio: 16/14;
+
+//== Typography
+
+	$font-family-pri  : "Roboto", "Varela Round", "Avenir Next", 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif; // Primary font.
+	$font-family-base : $font-family-pri;
+	$font-family-sec  : 'Gilroy ExtraBold', 'Georgia';
+
+	//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+	$font-family-monospace : Menlo, Monaco, Consolas, "Courier New", monospace;
+
+	$font-size-base  : 16px;
+	$font-size-small : ceil(($font-size-base / $font-ratio));
+	$font-size-large : ceil(($font-size-base * $font-ratio) * (($font-ratio/$golden-ratio) + $golden-ratio));
+
+	$font-size-h1 : ceil(($font-size-base * (($font-ratio/$golden-ratio) + $golden-ratio)));
+	$font-size-h2 : ceil(($font-size-h1 * ($font-ratio/$golden-ratio)) + $golden-ratio);
+	$font-size-h3 : ceil(($font-size-h2 * ($font-ratio/$golden-ratio)) + $golden-ratio);
+	$font-size-h4 : ceil(($font-size-h3 * ($font-ratio/$golden-ratio)) + $golden-ratio);
+	$font-size-h5 : ceil(($font-size-h4 * ($font-ratio/$golden-ratio)) + $golden-ratio);
+	$font-size-h6 : ceil(($font-size-h5 * ($font-ratio/$golden-ratio)) + $golden-ratio);
+
+
+//== Breakpoints
+
+	//** Extra small bp / phone
+	$bp-xsmall     : 480px;
+	$bp-xsmall-min : $bp-xsmall;
+	$bp-phone      : $bp-xsmall-min;
+
+	//** Small bp / phone / tablet(potrait)
+	$bp-small     : 600px;
+	$bp-small-min : $bp-small;
+	$bp-tablet    : $bp-small-min;
+
+	//** Medium bp / tablet(potrait) / desktop
+	$bp-medium     : 768px;
+	$bp-medium-min : $bp-medium;
+	$bp-desktop    : $bp-medium-min;
+
+	//** Large bp / wide desktop
+	$bp-large         : 1440px;
+	$bp-large-min     : $bp-large;
+	$bp-large-desktop : $bp-large-min;
+
+	//** So media queries don't overlap when required, provide a maximum
+	$bp-xsmall-max : ($bp-small-min - 1);
+	$bp-small-max  : ($bp-medium-min - 1);
+	$bp-medium-max : ($bp-large-min - 1);
+
+
+//== Material Keylines
+
+	$global-padding : 16px !default;
+	$global-spacer  : $global-padding / 2;
+
+	$app-bar-mobile--height : 56px !default;
+	$app-bar-tablet--height : $app-bar-mobile--height + $global-spacer !default;
+
+	$icon-touch-target : $app-bar-mobile--height - $global-spacer;
+	$icon-size         : $icon-touch-target / 2;
+
+
+//== Material Motion
+
+	$cb-ease-in     : cubic-bezier(0.4, 0.0, 1, 1) !default; // for objects leaving the screen.
+	$cb-ease-out    : cubic-bezier(0.0, 0.0, 0.2, 1) !default; // for objects entering the screen.
+	$cb-ease-in-out : cubic-bezier(0.4, 0.0, 0.2, 1) !default;
+	$cb-sharp       : cubic-bezier(0.4, 0.0, 0.6, 1) !default;

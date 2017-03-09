@@ -1,0 +1,299 @@
+// ===================================================================================
+// Mixins
+// ===================================================================================
+
+
+%clearfix {
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin flex-center {
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+}
+
+//
+// @mixin  : font-smoothing.
+// Purpose : For font smoothing.
+//
+
+	@mixin font-smoothing {
+		text-rendering             : optimizeLegibility;
+		-webkit-font-smoothing     : antialiased;
+		-moz-osx-font-smoothing    : grayscale;
+		-moz-font-feature-settings : 'liga', 'kern';
+		font-kerning               : auto;
+	}
+
+
+//
+// @mixin  : font.
+// Purpose : For setting font-family, font-size, font-weight and font-style.
+//
+
+	@mixin font($family, $size, $weight : normal, $style : normal)
+	{
+		font-family : $family;
+		@include font-size($size);
+		font-weight : $weight;
+		font-style  : $style;
+	}
+
+//
+// @mixin  : font-size.
+// Purpose : For px & rem calculations of font size.
+//
+
+	@mixin font-size($size)
+	{
+		font-size : $size;
+		font-size : calc-rem($size);
+        line-height: $size * $golden-ratio;
+	}
+
+// LINE HEIGHT
+
+// usage example: @include line-height(16);
+
+@mixin line-height($heightValue: 12 ){
+	line-height: $heightValue + px; //fallback for old browsers
+	line-height: (0.125 * $heightValue) + rem;
+}
+
+// CALCULATE REM
+
+	@function calc-rem($size)
+	{
+	  $remSize : $size / 16px;
+	  @return $remSize * 1rem;
+	}
+
+
+// CENTER BLOCK
+
+@mixin center-block {
+	margin: 0 auto;
+	@include l-r(0,0);
+}
+
+// Vertical Center/Middle Align
+
+	@mixin vertical-align {
+		// As per: Sebastian Ekström
+		// URL: http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+		position: relative;
+	 	top: 50%;
+	 	transform: translateY(-50%);
+	}
+
+
+// typography
+	@mixin text-upper {
+		text-transform: uppercase;
+	}
+
+	@mixin text-lower {
+		text-transform: lowercase;
+	}
+
+
+// Sizing
+//
+//## Specify the dimensions of an object more easily
+
+	@mixin size($width,$height) {
+	  width  : $width;
+	  height : $height;
+	}
+
+	@mixin square($size) {
+	  @include size($size,$size);
+	}
+
+
+// text-truncate
+//
+//## Shorten object text and append ellipsis
+
+	@mixin truncate {
+		text-overflow: ellipsis;
+		overflow    : hidden;
+		white-space : nowrap;
+	}
+
+// border-radius
+//
+// ##
+
+    @mixin border-top-radius($radius) {
+    	border-top-right-radius : $radius;
+    	border-top-left-radius  : $radius;
+    }
+
+    @mixin border-bottom-radius($radius) {
+    	border-bottom-right-radius : $radius;
+    	border-bottom-left-radius  : $radius;
+    }
+
+    @mixin border-right-radius($radius) {
+    	border-bottom-right-radius : $radius;
+    	border-top-right-radius    : $radius;
+    }
+
+    @mixin border-left-radius($radius) {
+    	border-bottom-left-radius : $radius;
+    	border-top-left-radius    : $radius;
+    }
+
+
+// blur
+//
+// ##
+
+	@mixin blur($blur:10px) {
+		-webkit-filter : blur($blur);
+		-moz-filter    : blur($blur);
+		-ms-filter     : blur($blur);
+		-o-filter      : blur($blur);
+		filter         : blur($blur);
+	}
+
+
+// Positioning
+//
+// ##
+
+	@mixin l-r($l,$r) { // Left & Right Positioning
+		left: $l;
+		right: $r;
+	}
+
+
+	@mixin t-b($t,$b) { // Top & Bottom Positioning
+		top: $t;
+		bottom: $b;
+	}
+
+	@mixin placement($t,$r,$b,$l) {
+		top: $t;
+		right: $r;
+		bottom: $b;
+		left: $l;
+	}
+
+// BACKGROUND COLOR
+
+@mixin bg-color($color:#fff,$alpha:1) {
+	background-color: $color;
+	background-color: rgba($color, $alpha);
+}
+
+// Vertical gradient, from top to bottom
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop
+// Color stops are not available in IE9 and below
+@mixin vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+	background : -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Safari 51-6, Chrome 10+
+	background : linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 1210+, Safari 7+, Chrome 26+
+	// filter     : e(%("progid:DXImageTransformMicrosoftgradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb($start-color),argb($end-color))); // IE9 and down
+}
+
+@mixin vertical-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
+	background-image: -webkit-linear-gradient($start-color, $mid-color $color-stop, $end-color);
+	background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
+	background-repeat: no-repeat;
+	// filter: e(%("progid:DXImageTransformMicrosoftgradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb($start-color),argb($end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+}
+
+
+//  // Horizontal gradient, from left to right
+// //
+// // Creates two color stops, start and end, by specifying a color and position for each color stop
+// // Color stops are not available in IE9 and below
+@mixin horizontal($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+	background-image  : -webkit-linear-gradient(left, color-stop($start-color $start-percent), color-stop($end-color $end-percent)); // Safari 51-6, Chrome 10+
+	background-image  : linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 1210+, Safari 7+, Chrome 26+
+	background-repeat : repeat-x;
+	// filter            : e(%("progid:DXImageTransformMicrosoftgradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb($start-color),argb($end-color))); // IE9 and down
+}
+
+@mixin horizontal-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
+	background-image: -webkit-linear-gradient(left, $start-color, $mid-color $color-stop, $end-color);
+	background-image: linear-gradient(to right, $start-color, $mid-color $color-stop, $end-color);
+	background-repeat: no-repeat;
+	// filter: e(%("progid:DXImageTransformMicrosoftgradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb($start-color),argb($end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+}
+
+//
+// @mixin  : breakpoint.
+// Purpose : For media query breakpoints.
+//
+
+	@mixin breakpoint($bp) {
+		// Retina breakpoint
+		@if $bp == retina {
+			@media screen and (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+				@content;
+			}
+		} @else {
+			@media only screen and (min-width: calc-rem($bp))
+			{
+				@content;
+			}
+		}
+	}
+
+    @mixin breakpoint-max($bp) {
+		@media only screen and (max-width: calc-rem($bp)) {
+			@content;
+		}
+	}
+
+	@mixin breakpoint-h($bp-h) {
+		@media only screen and (min-height: calc-rem($bp-h)) {
+			@content;
+		}
+	}
+
+	@mixin breakpoint-h-max($bp-h) {
+		@media only screen and (max-height: calc-rem($bp-h)) {
+			@content;
+		}
+	}
+
+/// Mixin to customize scrollbars
+/// Beware, this does not work in all browsers
+/// @author Hugo Giraudel
+/// @param {Length} $size - Horizontal scrollbar's height and vertical scrollbar's width
+/// @param {Color} $foreground-color - Scrollbar's color
+/// @param {Color} $background-color [mix($foreground-color, white, 50%)] - Scrollbar's color
+/// @example scss - Scrollbar styling
+///   @include scrollbars(.5em, slategray);
+	@mixin scrollbar($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+	  // For Google Chrome
+	  ::-webkit-scrollbar {
+	      width : $size;
+	      height : $size;
+	  }
+
+	  ::-webkit-scrollbar-thumb {
+	      background : $foreground-color;
+	  }
+
+	  ::-webkit-scrollbar-track {
+	      background : $background-color;
+	  }
+
+	  // For Internet Explorer
+	  body {
+	    scrollbar-face-color  : $foreground-color;
+	    scrollbar-track-color : $background-color;
+	  }
+	}

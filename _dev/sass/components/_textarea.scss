@@ -1,0 +1,20 @@
+textarea {
+    appearance: none;
+    display: flex;
+    align-self: stretch;
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    border-bottom: thin solid #ddd;
+    padding: $global-padding / 2 0;
+    font-family: $font-family-base;
+    @include font-size(16px);
+    color: #000;
+    outline: 0;
+    text-overflow: ellipsis;
+    background: none;
+
+    &:focus {
+        border-bottom: thin solid var(--brand-secondary);
+    }
+}

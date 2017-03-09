@@ -1,0 +1,37 @@
+input[type='text'],
+input[type='url'] {
+    appearance: none;
+    display: flex;
+    align-self: stretch;
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    border-bottom: thin solid #ddd;
+    padding: $global-padding / 2 0;
+    font-family: $font-family-base;
+    @include font-size(16px);
+    color: #000;
+    outline: 0;
+    text-overflow: ellipsis;
+    background: none;
+
+    &:focus {
+        border-bottom: thin solid var(--brand-secondary);
+
+        // &:valid {
+        //     border-bottom: thin solid var(--brand-success);
+        // }
+        //
+        // &:invalid {
+        //     border-bottom: thin solid var(--brand-danger);
+        // }
+    }
+}
+
+input[type='checkbox'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    opacity: 0;
+}

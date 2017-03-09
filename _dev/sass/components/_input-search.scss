@@ -1,0 +1,14 @@
+input[type="search"]::-webkit-search-cancel-button {
+    position: absolute;
+    top: 0;
+    right: -40px;
+    appearance: none;
+    background: url('/static/images/icons/ic_cancel_red_24px.svg');
+    background-repeat: no-repeat;
+    background-size: calc(var(--icon-size) / 1.25);
+    background-position: center center;
+    width: 40px;
+    height: 48px;
+    cursor: pointer;
+    z-index: 3;
+}

@@ -1,0 +1,28 @@
+@font-face {
+    font-family : 'Varela Round';
+    font-style  : normal;
+    font-weight : normal;
+    src         : local('Varela Round Regular'),
+                  local('Varela-Round-Regular'),
+                  url(/static/fonts/Varela/VarelaRound-Regular.woff) format('woff');
+}
+
+@font-face {
+    font-family : 'Gilroy Light';
+    font-style  : normal;
+    font-weight : normal;
+    src         : local('Gilroy Light'),
+                  local('Gilroy-Light'),
+                  url(/static/fonts/Gilroy/Gilroy-Light.woff) format('woff'),
+                  url(/static/fonts/Gilroy/Gilroy-Light.woff2) format('woff2');
+}
+
+@font-face {
+    font-family : 'Gilroy ExtraBold';
+    font-style  : normal;
+    font-weight : normal;
+    src         : local('Gilroy ExtraBold'),
+                  local('Gilroy-ExtraBold'),
+                  url(/static/fonts/Gilroy/Gilroy-ExtraBold.woff) format('woff'),
+                  url(/static/fonts/Gilroy/Gilroy-ExtraBold.woff2) format('woff2');
+}
